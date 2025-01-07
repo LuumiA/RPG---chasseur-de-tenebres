@@ -151,7 +151,8 @@ function buyHealth() {
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
-    text.innerText = "You do not have enough gold to buy health.";
+    text.innerText =
+      "Vous n'avez pas assez de pièces d'or pour acheter des points de santé.";
   }
 }
 
@@ -162,15 +163,16 @@ function buyWeapon() {
       currentWeapon++;
       goldText.innerText = gold;
       let newWeapon = weapons[currentWeapon].name;
-      text.innerText = "You now have a " + newWeapon + ".";
+      text.innerText = "Vous avez maintenant une " + newWeapon + ".";
       inventory.push(newWeapon);
-      text.innerText += " In your inventory you have: " + inventory;
+      text.innerText += " Dans votre inventaire, vous avez : " + inventory;
     } else {
-      text.innerText = "You do not have enough gold to buy a weapon.";
+      text.innerText =
+        "Vous n'avez pas assez de pièces d'or pour acheter une arme.";
     }
   } else {
-    text.innerText = "You already have the most powerful weapon!";
-    button2.innerText = "Sell weapon for 15 gold";
+    text.innerText = "Vous possédez déjà l'arme la plus puissante !";
+    button2.innerText = "Vendre une arme pour 15 pièces d'or";
     button2.onclick = sellWeapon;
   }
 }
@@ -180,10 +182,10 @@ function sellWeapon() {
     gold += 15;
     goldText.innerText = gold;
     let currentWeapon = inventory.shift();
-    text.innerText = "You sold a " + currentWeapon + ".";
-    text.innerText += " In your inventory you have: " + inventory;
+    text.innerText = "Vous avez vendu une " + currentWeapon + ".";
+    text.innerText += " Dans votre inventaire, vous avez : " + inventory;
   } else {
-    text.innerText = "Don't sell your only weapon!";
+    text.innerText = "Ne vendez pas votre seule arme !";
   }
 }
 
@@ -211,15 +213,15 @@ function goFight() {
 }
 
 function attack() {
-  text.innerText = "The " + monsters[fighting].name + " attacks.";
+  text.innerText = "Le " + monsters[fighting].name + " attaque.";
   text.innerText +=
-    " You attack it with your " + weapons[currentWeapon].name + ".";
+    " Vous l'attaquez avec votre " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
   if (isMonsterHit()) {
     monsterHealth -=
       weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
   } else {
-    text.innerText += " You miss.";
+    text.innerText += " Vous ratez votre coup.";
   }
   healthText.innerText = health;
   monsterHealthText.innerText = monsterHealth;
@@ -233,7 +235,7 @@ function attack() {
     }
   }
   if (Math.random() <= 0.1 && inventory.length !== 1) {
-    text.innerText += " Your " + inventory.pop() + " breaks.";
+    text.innerText += " Votre " + inventory.pop() + " s'est brisé.";
     currentWeapon--;
   }
 }
@@ -249,7 +251,7 @@ function isMonsterHit() {
 }
 
 function dodge() {
-  text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+  text.innerText = "Vous esquivez l'attaque du " + monsters[fighting].name;
 }
 
 function defeatMonster() {
@@ -297,16 +299,17 @@ function pick(guess) {
   while (numbers.length < 10) {
     numbers.push(Math.floor(Math.random() * 11));
   }
-  text.innerText = "You picked " + guess + ". Here are the random numbers:\n";
+  text.innerText =
+    "Vous avez choisi " + guess + ". Voici les nombres aléatoires:\n";
   for (let i = 0; i < 10; i++) {
     text.innerText += numbers[i] + "\n";
   }
   if (numbers.includes(guess)) {
-    text.innerText += "Right! You win 20 gold!";
+    text.innerText += "Bravo ! Vous gagnez 20 pièces d'or !";
     gold += 20;
     goldText.innerText = gold;
   } else {
-    text.innerText += "Wrong! You lose 10 health!";
+    text.innerText += "Raté ! Vous perdez 10 points de santé !";
     health -= 10;
     healthText.innerText = health;
     if (health <= 0) {
