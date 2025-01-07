@@ -53,6 +53,23 @@ body {
   font-size: 18px;
 }
 
+.stat-change {
+  animation: statBlink 0.5s ease-in-out;
+  animation-iteration-count: 2;
+}
+
+@keyframes statBlink {
+  0% {
+    color: #ffffff;
+  } /* Blanc au début */
+  50% {
+    color: #d4a259;
+  } /* Doré au milieu */
+  100% {
+    color: #ffffff;
+  } /* Retour au blanc */
+}
+
 button {
   font-family: "MedievalSharp", serif;
   font-size: 16px;

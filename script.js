@@ -150,6 +150,10 @@ function buyHealth() {
     health += 10;
     goldText.innerText = gold;
     healthText.innerText = health;
+    healthText.classList.add("stat-change");
+    setTimeout(() => {
+      healthText.classList.remove("stat-change");
+    }, 500);
   } else {
     text.innerText =
       "Vous n'avez pas assez de pièces d'or pour acheter des points de santé.";
@@ -259,6 +263,16 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
+  xpText.classList.add("stat-change");
+  setTimeout(() => {
+    xpText.classList.remove("stat-change");
+  }, 500);
+
+  goldText.classList.add("stat-change");
+  setTimeout(() => {
+    goldText.classList.remove("stat-change");
+  }, 500);
+
   update(locations[4]);
 }
 
