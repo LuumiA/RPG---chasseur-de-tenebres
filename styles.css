@@ -1,5 +1,17 @@
 body {
-  background-color: #0a0a23;
+  font-family: "MedievalSharp", serif;
+  background-color: #2c2c24;
+  color: #f0e6d2;
+  background-image: url("./img/fabian-kleiser-tyu1H9obFfA-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Assombrir avec une couleur */
+  background-blend-mode: overlay;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Page pleine hauteur */
+  margin: 0;
 }
 
 #text {
@@ -9,12 +21,15 @@ body {
 }
 
 #game {
-  max-width: 500px;
-  max-height: 400px;
-  background-color: #ffffff;
-  color: #ffffff;
-  margin: 30px auto 0px;
-  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #3e3a31;
+  border: 2px solid #f0e6d2;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  color: #f4e3c2;
+  text-align: center;
 }
 
 #controls,
@@ -34,12 +49,35 @@ body {
 
 .stat {
   padding-right: 10px;
+  color: #eeeeee; /* Texte blanc */
+  font-size: 18px;
 }
 
 button {
+  font-family: "MedievalSharp", serif;
+  font-size: 16px;
+  color: #f4e3c2;
+  background-color: #6b4f31; /* Marron foncé */
+  border: 2px solid #d4a259;
+  border-radius: 10px;
+  padding: 10px 20px;
   cursor: pointer;
-  color: #0a0a23;
-  background-color: #feac32;
-  background-image: linear-gradient(#fecc4c, #ffac33);
-  border: 3px solid #feac32;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+button:hover {
+  background-color: #8c6338; /* Marron clair au survol */
+  transform: scale(1.1); /* Légèrement plus grand */
+}
+
+h1,
+h2 {
+  font-family: "Uncial Antiqua", serif; /* Une autre police médiévale */
+  font-size: 28px;
+  color: #f4d03f; /* Or pour le titre */
+}
+
+p {
+  font-family: "MedievalSharp", serif;
+  font-size: 18px;
 }
