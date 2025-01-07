@@ -13,7 +13,6 @@ const button2 = document.querySelector("#button2");
 const button3 = document.querySelector("#button3");
 const text = document.querySelector("#text");
 const xpText = document.querySelector("#xpText");
-const healthText = document.querySelector("#healthText");
 const goldText = document.querySelector("#goldText");
 const monsterStats = document.querySelector("#monsterStats");
 const monsterName = document.querySelector("#monsterName");
@@ -145,19 +144,30 @@ function goCave() {
 // Les autres fonctions restent similaires, mais j'ai adapté les textes dans chaque partie.
 
 function buyHealth() {
+  if (health >= 100) {
+    text.innerText = "Vous avez déjà toute votre santé !";
+    return;
+  }
+
   if (gold >= 10) {
     gold -= 10;
     health += 10;
+
+    if (health > 100) {
+      health = 100;
+    }
+
     goldText.innerText = gold;
-    healthText.innerText = health;
-    healthText.classList.add("stat-change");
-    setTimeout(() => {
-      healthText.classList.remove("stat-change");
-    }, 500);
+    updateHealthBar();
   } else {
     text.innerText =
       "Vous n'avez pas assez de pièces d'or pour acheter des points de santé.";
   }
+}
+
+function updateHealthBar() {
+  const healthPercentage = (health / 100) * 100;
+  document.querySelector(".slide-of-life").style.width = healthPercentage + "%";
 }
 
 function buyWeapon() {
@@ -214,6 +224,7 @@ function goFight() {
   monsterStats.style.display = "block";
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsterHealth;
+  console.log("Santé initiale du monstre : ", monsterHealth);
 }
 
 function attack() {
@@ -221,14 +232,25 @@ function attack() {
   text.innerText +=
     " Vous l'attaquez avec votre " + weapons[currentWeapon].name + ".";
   health -= getMonsterAttackValue(monsters[fighting].level);
+  console.log("Santé avant attaque : ", monsterHealth);
   if (isMonsterHit()) {
     monsterHealth -=
       weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+    console.log("Santé après attaque : ", monsterHealth);
   } else {
     text.innerText += " Vous ratez votre coup.";
   }
-  healthText.innerText = health;
-  monsterHealthText.innerText = monsterHealth;
+  updateHealthBar();
+  if (monsterHealthText) {
+    console.log("monsterHealthText : ", monsterHealthText);
+
+    monsterHealthText.innerText = monsterHealth;
+  } else {
+    console.error("L'élément monsterHealthText est introuvable !");
+  }
+
+  console.log("Texte mis à jour : ", monsterHealth);
+
   if (health <= 0) {
     lose();
   } else if (monsterHealth <= 0) {
