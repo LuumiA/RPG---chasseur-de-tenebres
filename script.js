@@ -24,6 +24,9 @@ const weapons = [
   { name: "Dague rouillée", power: 30 },
   { name: "Marteau de guerre", power: 50 },
   { name: "Épée d'acier", power: 100 },
+  { name: "Arbalète enflammée", power: 150 },
+  { name: "Lame enchantée", power: 200 },
+  { name: "Marteau divin", power: 300 },
 ];
 
 // Les ennemis
@@ -42,6 +45,16 @@ const monsters = [
     name: "Bête des ténèbres",
     level: 20,
     health: 300,
+  },
+  {
+    name: "Démon ancestral",
+    level: 25,
+    health: 500,
+  },
+  {
+    name: "Dragon infernal",
+    level: 30,
+    health: 800,
   },
 ];
 
@@ -267,8 +280,7 @@ function attack() {
 }
 
 function getMonsterAttackValue(level) {
-  const hit = level * 5 - Math.floor(Math.random() * xp);
-  console.log(hit);
+  const hit = level * 4 - Math.floor(Math.random() * xp);
   return hit > 0 ? hit : 0;
 }
 
@@ -313,8 +325,8 @@ function restart() {
   currentWeapon = 0;
   inventory = ["stick"];
   goldText.innerText = gold;
-  healthText.innerText = health;
   xpText.innerText = xp;
+  updateHealthBar();
   goTown();
 }
 
