@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>RPG - Chasseur de Ténèbres</title>
+  </head>
+  <body>
+    <div id="game">
+      <div id="stats">
+        <span class="stat"
+          >XP : <strong><span id="xpText">0</span></strong></span
+        >
+        <span class="stat"
+          >Santé : <strong><span id="healthText">100</span></strong></span
+        >
+        <span class="stat"
+          >Pièces d'or : <strong><span id="goldText">50</span></strong></span
+        >
+      </div>
+      <div id="controls">
+        <button id="button1">Aller au marché</button>
+        <button id="button2">Explorer la forêt</button>
+        <button id="button3">Affronter la bête</button>
+      </div>
+      <div id="monsterStats">
+        <span class="stat"
+          >Nom de l'ennemi : <strong><span id="monsterName"></span></strong
+        ></span>
+        <span class="stat"
+          >Santé : <strong><span id="monsterHealth"></span></strong
+        ></span>
+      </div>
+      <div id="text">
+        Bienvenue dans <strong>Chasseur de Ténèbres</strong>. Vous êtes un
+        guerrier errant chargé de protéger le village d'Arkheim contre une bête
+        mystérieuse qui rôde dans les forêts environnantes. Vous êtes
+        actuellement sur la place du village. Où voulez-vous aller ? Utilisez
+        les boutons ci-dessus pour faire votre choix.
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
